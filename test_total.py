@@ -1,10 +1,10 @@
 import numpy as np
 import cv2
 import os
-faceCascade = cv2.CascadeClassifier('cv/lbpcascade_frontalface.xml')
+faceCascade = cv2.CascadeClassifier('cv/lbpcascade_frontalface_improved.xml')
 cap = cv2.VideoCapture('test1.mp4')
-cap.set(3,640) # set Width
-cap.set(4,480) # set Height
+cap.set(3, 640) # set Width
+cap.set(4, 480) # set Height
 v = []
 count=0
 f = open('vectors', mode='a+')
@@ -21,7 +21,7 @@ while (count<100):
     for (x, y, w, h) in faces:
         count = count+1
         v.append((x, y))
-        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+        cv2.rectangle(img, (x+30, y), (x+w, y+h), (255, 0, 0), 2)
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = img[y:y+h, x:x+w]
     cv2.imshow('video', img)
